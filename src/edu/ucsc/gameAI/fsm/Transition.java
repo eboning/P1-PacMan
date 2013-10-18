@@ -1,5 +1,6 @@
 package edu.ucsc.gameAI.fsm;
 
+import pacman.game.Game;
 import edu.ucsc.gameAI.IAction;
 import edu.ucsc.gameAI.ICondition;
 
@@ -33,8 +34,18 @@ public class Transition implements ITransition {
 	}
 
 	@Override
-	public boolean isTriggered() {
-		return condition.test();
+	public boolean isTriggered(Game game) {
+		return condition.test(game);
+	}
+
+	@Override
+	public void setTargetState(IState targetState) {
+		this.targetState = targetState;
+	}
+
+	@Override
+	public void setAction(IAction action) {
+		this.action = action;
 	}
 
 }

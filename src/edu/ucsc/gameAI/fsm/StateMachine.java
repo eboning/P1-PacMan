@@ -2,6 +2,7 @@ package edu.ucsc.gameAI.fsm;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import pacman.game.Game;
 
 import edu.ucsc.gameAI.IAction;
 
@@ -21,12 +22,12 @@ public class StateMachine implements IStateMachine {
 	
 
 	@Override
-	public Collection<IAction> update() {
+	public Collection<IAction> update(Game game) {
 		ITransition triggeredTransition = null;
 		Collection<IAction> actions = new ArrayList<IAction>();
 		
 		for (ITransition transition : currentState.getTransitions())
-			if (transition.isTriggered()){
+			if (transition.isTriggered(game)){
 				triggeredTransition = transition;
 				break;
 			}
@@ -49,8 +50,12 @@ public class StateMachine implements IStateMachine {
 
 	@Override
 	public IState getCurrentState() {
-		// TODO Auto-generated method stub
-		return null;
+		return currentState;
+	}
+
+	@Override
+	public void setCurrentState(IState state) {
+		this.currentState = state;
 	}
 
 }

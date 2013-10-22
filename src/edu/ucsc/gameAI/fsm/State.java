@@ -40,4 +40,24 @@ public class State implements IState {
 		return transitions;
 	}
 
+	@Override
+	public void setAction(IAction action) {
+		this.action = action;		
+	}
+
+	@Override
+	public void setEntryAction(IAction action) {
+		this.entryAction = action;
+	}
+
+	@Override
+	public void setExitAction(IAction action) {
+		this.exitAction = action;
+	}
+
+	@Override
+	public void setTransitions(Collection<ITransition> trans) {
+		this.transitions = trans;
+	}
+
 }

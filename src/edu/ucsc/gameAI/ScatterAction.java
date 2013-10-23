@@ -11,8 +11,7 @@ public class ScatterAction implements IAction, IBinaryNode {
 	int fromNodeIndex, toNodeIndex;
 	MOVE lastMoveMade;
 
-	public ScatterAction(Game game, int fromNodeIndex, int toNodeIndex,
-			MOVE lastMoveMade) {
+	public ScatterAction(Game game, int fromNodeIndex, int toNodeIndex, MOVE lastMoveMade) {
 		this.game = game;
 		this.fromNodeIndex = fromNodeIndex;
 		this.toNodeIndex = toNodeIndex;

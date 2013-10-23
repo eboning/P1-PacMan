@@ -11,8 +11,7 @@ public class AttackAction implements IAction, IBinaryNode {
 	int fromNodeIndex, toNodeIndex;
 	MOVE lastMoveMade;
 
-	public AttackAction(Game game, int fromNodeIndex, int toNodeIndex,
-			MOVE lastMoveMade) {
+	public AttackAction(Game game, int fromNodeIndex, int toNodeIndex, MOVE lastMoveMade) {
 		this.game = game;
 		this.fromNodeIndex = fromNodeIndex;
 		this.toNodeIndex = toNodeIndex;
@@ -29,6 +28,6 @@ public class AttackAction implements IAction, IBinaryNode {
 	
 	@Override
 	public MOVE getMove() {
-		return game.getApproximateNextMoveTowardsTarget(fromNodeIndex, toNodeIndex, lastMoveMade, DM.PATH);
+		return game.getApproximateNextMoveTowardsTarget(fromNodeIndex, toNodeIndex, lastMoveMade, DM.EUCLID);
 	}
 }

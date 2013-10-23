@@ -52,7 +52,7 @@ public class Executor
 		
 		//run multiple games in batch mode - good for testing.
 		int numTrials=10000;
-		//exec.runExperiment(new StarterPacMan(),new Legacy2TheReckoning(),numTrials);
+		exec.runExperiment(new StarterPacMan(),new MyGhosts(),numTrials);
 		 
 		
 		/*
@@ -64,15 +64,15 @@ public class Executor
 		
 		///*
 		//run the game in asynchronous mode.
-		boolean visual=true;
+		boolean visual=false;
 		
 		// run unit tests during execution
-		boolean bRunUnitTests=true;
+		boolean bRunUnitTests=false;
 //		exec.runGameTimed(new NearestPillPacMan(),new AggressiveGhosts(),visual);
 
 		//exec.runGameTimed(new StarterPacMan(),new EvaluationAgent(),visual);
 		//exec.runGameTimed(new StarterPacMan(),new MyGhosts(),visual,bRunUnitTests);
-		exec.runGameTimed(new HumanController(new KeyBoardInput()),new MyGhosts(),visual,bRunUnitTests);
+		//exec.runGameTimed(new HumanController(new KeyBoardInput()),new MyGhosts(),visual,bRunUnitTests);
 
 //		exec.runGameTimed(new HumanController(new KeyBoardInput()),new StarterGhosts(),visual);	
 		//*/
@@ -122,7 +122,7 @@ public class Executor
 			}
 			
 			avgScore+=game.getScore();
-			System.out.println(i+"\t"+game.getScore());
+//			System.out.println(i+"\t"+game.getScore());
 		}
 		
 		System.out.println(avgScore/trials);

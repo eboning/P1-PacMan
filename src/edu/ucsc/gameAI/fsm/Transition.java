@@ -13,6 +13,8 @@ public class Transition implements ITransition {
 		this.condition = condition;
 	}
 
+	public Transition() { }
+	
 	IState targetState;
 	IAction action;
 	ICondition condition;

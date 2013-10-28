@@ -55,7 +55,7 @@ public class Executor
 		int numTrials=5000;
 		//exec.runExperiment(new StarterPacMan(),new MyGhosts(),numTrials);
 		exec.runExperiment(new MyPacMan(), new Legacy2TheReckoning(), numTrials);
-		
+		//exec.runExperiment(new StarterPacMan(),new MyGhosts(),numTrials);
 		/*
 		//run a game in synchronous mode: game waits until controllers respond.
 		int delay=5;
@@ -123,7 +123,7 @@ public class Executor
 			}
 			
 			avgScore+=game.getScore();
-//			System.out.println(i+"\t"+game.getScore());
+			System.out.println(i+"\t"+game.getScore());
 		}
 		
 		System.out.println(avgScore/trials);
@@ -171,6 +171,7 @@ public class Executor
     public void runGameTimed(Controller<MOVE> pacManController,Controller<EnumMap<GHOST,MOVE>> ghostController,boolean visual,boolean bRunUnitTests)
 	{
 		Game game=new Game(0);
+		Evaluator eval = new Evaluator();
 		
 		GameView gv=null;
 		
@@ -203,7 +204,7 @@ public class Executor
 	        	gv.repaint();
 	        
 	        if (bRunUnitTests)
-	        	Evaluator.runUnitTests(game,pacManController,ghostController);
+	        	eval.runUnitTests(game,pacManController,ghostController);
 
 		}
 		

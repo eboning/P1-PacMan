@@ -51,7 +51,7 @@ public class Executor
 
 		
 		//run multiple games in batch mode - good for testing.
-		int numTrials=10000;
+		int numTrials=5000;
 		exec.runExperiment(new StarterPacMan(),new MyGhosts(),numTrials);
 		 
 		
@@ -122,7 +122,7 @@ public class Executor
 			}
 			
 			avgScore+=game.getScore();
-//			System.out.println(i+"\t"+game.getScore());
+			System.out.println(i+"\t"+game.getScore());
 		}
 		
 		System.out.println(avgScore/trials);
@@ -170,6 +170,7 @@ public class Executor
     public void runGameTimed(Controller<MOVE> pacManController,Controller<EnumMap<GHOST,MOVE>> ghostController,boolean visual,boolean bRunUnitTests)
 	{
 		Game game=new Game(0);
+		Evaluator eval = new Evaluator();
 		
 		GameView gv=null;
 		
@@ -202,7 +203,7 @@ public class Executor
 	        	gv.repaint();
 	        
 	        if (bRunUnitTests)
-	        	Evaluator.runUnitTests(game,pacManController,ghostController);
+	        	eval.runUnitTests(game,pacManController,ghostController);
 
 		}
 		

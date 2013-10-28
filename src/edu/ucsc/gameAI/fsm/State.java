@@ -8,12 +8,13 @@ public class State implements IState {
 	
 	public State(IAction action, IAction entryAction, IAction exitAction,
 			Collection<ITransition> transitions) {
-		super();
 		this.action = action;
 		this.entryAction = entryAction;
 		this.exitAction = exitAction;
 		this.transitions = transitions;
 	}
+	
+	public State() { }
 
 	IAction action;
 	IAction entryAction;

@@ -178,8 +178,10 @@ public class PathsCache
 			}
 		}
 					
-		if(!onTheWay)
+		if(!onTheWay) {
+			System.out.println("Closestjunction = " + closestJunction);
 			return concat(fromJunction.path, shortestPath, junctionsTo.get(closestJunction).reversePath);
+		} 
 		else
 			return concat(fromJunction.path, shortestPath);
 //			return concat(fromJunction.path, junctionsTo.get(closestJunction).reversePath);

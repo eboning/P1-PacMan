@@ -13,6 +13,7 @@ public class StateMachine implements IStateMachine {
 		super();
 		this.states = states;
 		this.initialState = initialState;
+		this.currentState = initialState;
 	}
 	
 	public StateMachine() { }

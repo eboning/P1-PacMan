@@ -23,7 +23,8 @@ import pacman.controllers.examples.RandomNonRevPacMan;
 import pacman.controllers.examples.RandomPacMan;
 import pacman.controllers.examples.StarterGhosts;
 import pacman.controllers.examples.StarterPacMan;
-import pacman.entries.ghosts.*;
+import pacman.entries.ghosts.MyGhosts;
+import pacman.entries.pacman.MyPacMan;
 import pacman.game.Game;
 import pacman.game.GameView;
 import static pacman.game.Constants.*;
@@ -51,9 +52,9 @@ public class Executor
 
 		
 		//run multiple games in batch mode - good for testing.
-		int numTrials=10000;
-		exec.runExperiment(new StarterPacMan(),new MyGhosts(),numTrials);
-		 
+		int numTrials=5000;
+		//exec.runExperiment(new StarterPacMan(),new MyGhosts(),numTrials);
+		exec.runExperiment(new MyPacMan(), new Legacy2TheReckoning(), numTrials);
 		
 		/*
 		//run a game in synchronous mode: game waits until controllers respond.

@@ -37,7 +37,7 @@ public class Transition implements ITransition {
 
 	@Override
 	public boolean isTriggered(Game game) {
-		return condition.test(game);
+
 	}
 
 	@Override

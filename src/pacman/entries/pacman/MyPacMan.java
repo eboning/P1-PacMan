@@ -53,10 +53,7 @@ public class MyPacMan extends Controller<MOVE>
 		
 		//Default State: Eat stuff
 		List<ITransition> pillsTrans = Arrays.asList(dangerGhost, edibleClose);
-		targetPills.setTransitions(pillsTrans);		edibleClose = new Transition();
-		edibleClose.setCondition(new CloseEdibleGhost());
-		edibleClose.setTargetState(edibleGhostClose);
-
+		targetPills.setTransitions(pillsTrans);		
 		
 		//Flee if nonedible ghosts are close
 		List<ITransition> fleeTrans = Arrays.asList(noGhosts);
@@ -72,8 +69,8 @@ public class MyPacMan extends Controller<MOVE>
 	//Adaptation of the StarterPacMan to use FSM
 	public MOVE getMove(Game game, long timeDue) 
 	{
-		int current = game.getPacmanCurrentNodeIndex();
-		MOVE lastMove = game.getPacmanLastMoveMade();
+		//int current = game.getPacmanCurrentNodeIndex();
+		//MOVE lastMove = game.getPacmanLastMoveMade();
 
 		//State actions
 		IAction eatPills = new EatPillsAction(game);
@@ -93,9 +90,12 @@ public class MyPacMan extends Controller<MOVE>
 			action = run;
 		} else if (actions.contains(hunt)) {
 			action = hunt;
-		} else {
+		} else if (actions.contains(eatPills)) {
 			action = eatPills;
+		} else {
+			action = run;
 		}
+		//System.out.println("Getting move");
 		return action.getMove();
 	}
 }

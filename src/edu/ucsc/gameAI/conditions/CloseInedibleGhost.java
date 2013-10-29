@@ -18,11 +18,11 @@ public class CloseInedibleGhost implements ICondition {
 
 			if(game.getGhostLairTime(ghost) == 0) { 
 				int distance = game.getShortestPathDistance(current, ghostNode, lastMove);
-				
 				if(distance < MIN_DISTANCE) {
-
+					System.out.println("Should flee now, distance = " + distance);
+					System.out.println("MinDistance = " + MIN_DISTANCE);
 					if ( !game.isGhostEdible(ghost) ) {
-							return true;
+						return true;
 					}
 				}
 			}

@@ -16,10 +16,10 @@ public class PacmanInRegion implements ICondition {
 	@Override
 	public boolean test(Game game) {
 		int pacman = game.getPacmanCurrentNodeIndex();
-		if(game.getNodeXCood(pacman) > this.x1 &&
-		   game.getNodeXCood(pacman) < this.x2 &&
-		   game.getNodeYCood(pacman) > this.y1 &&
-		   game.getNodeYCood(pacman) < this.y2) {
+		if(game.getNodeXCood(pacman) >= this.x1 &&
+		   game.getNodeXCood(pacman) <= this.x2 &&
+		   game.getNodeYCood(pacman) >= this.y1 &&
+		   game.getNodeYCood(pacman) <= this.y2) {
 			
 			return true;
 		}

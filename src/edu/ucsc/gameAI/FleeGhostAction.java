@@ -20,6 +20,7 @@ public class FleeGhostAction implements IAction {
 
 	@Override
 	public MOVE getMove() {
+		System.out.println("Currently Fleeing");
 		int current = game.getPacmanCurrentNodeIndex();
 		MOVE lastMove = game.getPacmanLastMoveMade();
 		int closest = -1;
@@ -40,7 +41,9 @@ public class FleeGhostAction implements IAction {
 				}
 			}
 		}
-		if (closest == -1) { return lastMove; }
-		return game.getApproximateNextMoveAwayFromTarget(current, closest, lastMove, DM.PATH);
+		if (closest == -1) { 
+			return lastMove; 
+		}
+		return game.getNextMoveAwayFromTarget(current, closest, DM.PATH);
 	}
 }

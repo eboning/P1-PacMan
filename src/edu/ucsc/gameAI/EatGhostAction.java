@@ -19,6 +19,8 @@ public class EatGhostAction implements IAction {
 
 	@Override
 	public MOVE getMove() {
+		System.out.println("currently eatin ghosts");
+		
 		int current = game.getPacmanCurrentNodeIndex();
 		MOVE lastMove = game.getPacmanLastMoveMade();
 		int closest = -1;
@@ -40,7 +42,7 @@ public class EatGhostAction implements IAction {
 			}
 		}
 		if (closest == -1) { return lastMove; }
-		return game.getApproximateNextMoveTowardsTarget(current, closest, lastMove, DM.PATH);
+		return game.getNextMoveTowardsTarget(current, closest, DM.PATH);
 
 	}
 

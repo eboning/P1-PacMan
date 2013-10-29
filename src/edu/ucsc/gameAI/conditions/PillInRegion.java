@@ -21,10 +21,10 @@ public class PillInRegion implements ICondition {
 		for(int i = 0; i<pills.length; i++) {
 			int pill = pills[i];
 
-			if(game.getNodeXCood(pill) > this.x1 &&
-			   game.getNodeXCood(pill) < this.x2 &&
-			   game.getNodeYCood(pill) > this.y1 &&
-			   game.getNodeYCood(pill) < this.y2) {
+			if(game.getNodeXCood(pill) >= this.x1 &&
+			   game.getNodeXCood(pill) <= this.x2 &&
+			   game.getNodeYCood(pill) >= this.y1 &&
+			   game.getNodeYCood(pill) <= this.y2) {
 				
 				tmp = true;
 			}

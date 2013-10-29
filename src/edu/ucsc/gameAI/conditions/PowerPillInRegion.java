@@ -20,10 +20,10 @@ public class PowerPillInRegion implements ICondition {
 		for(int i = 0; i<powerPills.length; i++) {
 			int powerPill = powerPills[i];
 
-			if(game.getNodeXCood(powerPill) > this.x1 &&
-			   game.getNodeXCood(powerPill) < this.x2 &&
-			   game.getNodeYCood(powerPill) > this.y1 &&
-			   game.getNodeYCood(powerPill) < this.y2) {
+			if(game.getNodeXCood(powerPill) >= this.x1 &&
+			   game.getNodeXCood(powerPill) <= this.x2 &&
+			   game.getNodeYCood(powerPill) >= this.y1 &&
+			   game.getNodeYCood(powerPill) <= this.y2) {
 				
 				tmp = true;
 			}

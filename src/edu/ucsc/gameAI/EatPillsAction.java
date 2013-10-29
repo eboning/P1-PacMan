@@ -19,6 +19,7 @@ public class EatPillsAction implements IAction {
 
 	@Override
 	public MOVE getMove() {
+		System.out.println("Currently Eatin Pills");
 		MOVE move;
 
 		//Code ripped straight form StarterPacMan

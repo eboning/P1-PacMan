@@ -16,10 +16,11 @@ public class NoGhosts implements ICondition {
 		for(GHOST ghost : GHOST.values()) {
 			int ghostNode = game.getGhostCurrentNodeIndex(ghost);
 
-			if(game.getShortestPathDistance(current, ghostNode, lastMove) < MIN_DISTANCE) {
-				return false;
+			if(game.getGhostLairTime(ghost) == 0) { 
+				if(game.getShortestPathDistance(current, ghostNode, lastMove) < MIN_DISTANCE) {
+					return false;
+				}
 			}
-
 		}
 		return true;
 	}

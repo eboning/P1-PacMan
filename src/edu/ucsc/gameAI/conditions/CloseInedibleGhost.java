@@ -16,14 +16,16 @@ public class CloseInedibleGhost implements ICondition {
 		for(GHOST ghost : GHOST.values()) {
 			int ghostNode = game.getGhostCurrentNodeIndex(ghost);
 
-			System.out.println("Current = " + current);
-			System.out.println("Ghostnode = " + ghostNode);
+			if(game.getGhostLairTime(ghost) == 0) { 
+				int distance = game.getShortestPathDistance(current, ghostNode, lastMove);
+				
+				if(distance < MIN_DISTANCE) {
 
-			if(game.getShortestPathDistance(current, ghostNode, lastMove) < MIN_DISTANCE) {
-				if ( !game.isGhostEdible(ghost) )
-						return true;
+					if ( !game.isGhostEdible(ghost) ) {
+							return true;
+					}
+				}
 			}
-
 		}
 		return false;
 	}

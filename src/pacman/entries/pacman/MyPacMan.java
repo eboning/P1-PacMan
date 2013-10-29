@@ -21,7 +21,7 @@ public class MyPacMan extends Controller<MOVE>
 	
 	private StateMachine pacmanStates;
 	private State flee, edibleGhostClose, targetPills;
-	private ITransition dangerGhost, edibleClose, noGhosts;
+	private ITransition edibleClose, dangerGhost, noGhosts;
 	
 	public MyPacMan()
 	{
@@ -39,13 +39,13 @@ public class MyPacMan extends Controller<MOVE>
 		pacmanStates = new StateMachine(states, targetPills);
 		
 		//Initialize our transitions
-		dangerGhost = new Transition();
-		dangerGhost.setCondition(new CloseInedibleGhost());
-		dangerGhost.setTargetState(flee);
-		
 		edibleClose = new Transition();
 		edibleClose.setCondition(new CloseEdibleGhost());
 		edibleClose.setTargetState(edibleGhostClose);
+
+		dangerGhost = new Transition();
+		dangerGhost.setCondition(new CloseInedibleGhost());
+		dangerGhost.setTargetState(flee);
 		
 		noGhosts = new Transition();
 		noGhosts.setCondition(new NoGhosts());
@@ -53,7 +53,10 @@ public class MyPacMan extends Controller<MOVE>
 		
 		//Default State: Eat stuff
 		List<ITransition> pillsTrans = Arrays.asList(dangerGhost, edibleClose);
-		targetPills.setTransitions(pillsTrans);
+		targetPills.setTransitions(pillsTrans);		edibleClose = new Transition();
+		edibleClose.setCondition(new CloseEdibleGhost());
+		edibleClose.setTargetState(edibleGhostClose);
+
 		
 		//Flee if nonedible ghosts are close
 		List<ITransition> fleeTrans = Arrays.asList(noGhosts);

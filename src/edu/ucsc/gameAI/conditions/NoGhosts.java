@@ -10,7 +10,7 @@ public class NoGhosts implements ICondition {
 
 	@Override
 	public boolean test(Game game) {
-		System.out.println("Testing for no ghosts");
+		//System.out.println("Testing for no ghosts");
 		int current = game.getPacmanCurrentNodeIndex();
 		MOVE lastMove = game.getPacmanLastMoveMade();
 

@@ -20,7 +20,7 @@ public class FleeGhostAction implements IAction {
 
 	@Override
 	public MOVE getMove() {
-		System.out.println("Currently Fleeing");
+	//	System.out.println("Currently Fleeing");
 		int current = game.getPacmanCurrentNodeIndex();
 		MOVE lastMove = game.getPacmanLastMoveMade();
 		int closest = -1;

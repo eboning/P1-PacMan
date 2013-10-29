@@ -19,7 +19,7 @@ public class EatGhostAction implements IAction {
 
 	@Override
 	public MOVE getMove() {
-		System.out.println("currently eatin ghosts");
+	//	System.out.println("currently eatin ghosts");
 		
 		int current = game.getPacmanCurrentNodeIndex();
 		MOVE lastMove = game.getPacmanLastMoveMade();

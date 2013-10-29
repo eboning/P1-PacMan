@@ -61,7 +61,7 @@ public class Executor
 		
 		//run multiple games in batch mode - good for testing.
 		int numTrials=10000;
-		//exec.runExperiment(new StarterPacMan(),new Legacy2TheReckoning(),numTrials);
+		//exec.runExperiment(new MyPacMan(),new Legacy2TheReckoning(),numTrials);
 		 
 		
 		/*
@@ -135,7 +135,7 @@ public class Executor
 			}
 			
 			avgScore+=game.getScore();
-			System.out.println(i+"\t"+game.getScore());
+			//System.out.println(i+"\t"+game.getScore());
 		}
 		
 		System.out.println(avgScore/trials);

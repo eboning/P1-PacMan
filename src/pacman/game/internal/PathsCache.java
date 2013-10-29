@@ -178,9 +178,8 @@ public class PathsCache
 			}
 		}
 					
-		if(!onTheWay) {
+		if(!onTheWay)
 			return concat(fromJunction.path, shortestPath, junctionsTo.get(closestJunction).reversePath);
-		} 
 		else
 			return concat(fromJunction.path, shortestPath);
 //			return concat(fromJunction.path, junctionsTo.get(closestJunction).reversePath);

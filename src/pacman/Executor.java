@@ -23,8 +23,8 @@ import pacman.controllers.examples.RandomNonRevPacMan;
 import pacman.controllers.examples.RandomPacMan;
 import pacman.controllers.examples.StarterGhosts;
 import pacman.controllers.examples.StarterPacMan;
-import pacman.entries.ghosts.MyGhosts;
-import pacman.entries.pacman.MyPacMan;
+import pacman.entries.ghosts.*;
+import pacman.entries.pacman.*;
 import pacman.game.Game;
 import pacman.game.GameView;
 import static pacman.game.Constants.*;
@@ -41,6 +41,14 @@ import pacman.Evaluator;
 @SuppressWarnings("unused")
 public class Executor
 {	
+	//enable and disable individual tests
+	boolean runActionsAndConditionsTests = true;
+	boolean runDecisionTreeTests = true;
+	boolean runFSMTests = true;
+	boolean runHFSMTests = false;
+	
+	final private int TEST_DURATION = 600; 
+	
 	/**
 	 * The main method. Several options are listed - simply remove comments to use the option you want.
 	 *
@@ -52,10 +60,10 @@ public class Executor
 
 		
 		//run multiple games in batch mode - good for testing.
-		int numTrials=5;
-		//exec.runExperiment(new StarterPacMan(),new MyGhosts(),numTrials);
-		//exec.runExperiment(new MyPacMan(), new Legacy2TheReckoning(), numTrials);
-		//exec.runExperiment(new StarterPacMan(),new MyGhosts(),numTrials);
+		int numTrials=10000;
+		//exec.runExperiment(new StarterPacMan(),new Legacy2TheReckoning(),numTrials);
+		 
+		
 		/*
 		//run a game in synchronous mode: game waits until controllers respond.
 		int delay=5;
@@ -69,15 +77,19 @@ public class Executor
 		
 		// run unit tests during execution
 		boolean bRunUnitTests=false;
-		exec.runGameTimed(new MyPacMan(),new Legacy2TheReckoning(),visual, bRunUnitTests);
-
-		//exec.runGameTimed(new StarterPacMan(),new EvaluationAgent(),visual);
-		//exec.runGameTimed(new StarterPacMan(),new MyGhosts(),visual,bRunUnitTests);
-		//exec.runGameTimed(new HumanController(new KeyBoardInput()),new MyGhosts(),visual,bRunUnitTests);
-
-//		exec.runGameTimed(new HumanController(new KeyBoardInput()),new StarterGhosts(),visual);	
-		//*/
 		
+		
+		exec.runGameTimed(new MyPacMan(),new Legacy2TheReckoning(),visual,bRunUnitTests);
+		
+		// mypacman testing
+		//exec.runGameTimed(new MyPacMan(),new Legacy2TheReckoning(),visual,bRunUnitTests);
+
+		// myghost testing
+		//exec.runGameTimed(new StarterPacMan(),new MyGhosts(),visual,bRunUnitTests);
+		
+		// for playing pacman with keyboard
+		//exec.runGameTimed(new HumanController(new KeyBoardInput()),new Legacy2TheReckoning(),visual,bRunUnitTests);
+
 		/*
 		//run the game in asynchronous mode but advance as soon as both controllers are ready  - this is the mode of the competition.
 		//time limit of DELAY ms still applies.
@@ -123,7 +135,7 @@ public class Executor
 			}
 			
 			avgScore+=game.getScore();
-	//		System.out.println(i+"\t"+game.getScore());
+			System.out.println(i+"\t"+game.getScore());
 		}
 		
 		System.out.println(avgScore/trials);
@@ -203,9 +215,15 @@ public class Executor
 	        if(visual)
 	        	gv.repaint();
 	        
-	        if (bRunUnitTests)
-	        	eval.runUnitTests(game,pacManController,ghostController);
-
+	        if (bRunUnitTests) {
+	        	eval.runUnitTests(game,pacManController,ghostController, runActionsAndConditionsTests, runDecisionTreeTests, runFSMTests, runHFSMTests);
+	        	if(game.getCurrentLevelTime() > TEST_DURATION)
+	        	{
+	        		System.out.println("Tests concluded. Scores:");
+	        		eval.printScores();
+	        		return;
+	        	}
+	        }
 		}
 		
 		pacManController.terminate();

@@ -82,8 +82,8 @@ public class MyPacMan extends Controller<MOVE>
 		IAction hunt = new EatGhostAction(game);
 		edibleGhostClose.setAction(hunt);
 		
-		
 		Collection<IAction> actions = pacmanStates.update(game);
+
 		//Do something with our actions
 		IAction action = null;
 		if(actions.contains(run)) {
@@ -95,7 +95,6 @@ public class MyPacMan extends Controller<MOVE>
 		} else {
 			action = run;
 		}
-		//System.out.println("Getting move");
 		return action.getMove();
 	}
 }

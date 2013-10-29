@@ -37,9 +37,9 @@ public class StateMachine implements IStateMachine {
 		if (triggeredTransition != null){
 			IState targetState = triggeredTransition.getTargetState();
 			
-			actions.add(currentState.getExitAction());
-			actions.add(triggeredTransition.getAction());
-			actions.add(targetState.getEntryAction());
+			if(currentState.getExitAction() != null) { actions.add(currentState.getExitAction()); }
+			if(triggeredTransition.getAction() != null) { actions.add(triggeredTransition.getAction()); }
+			if(targetState.getEntryAction() != null) { actions.add(targetState.getEntryAction()); }
 			
 			currentState = targetState;
 			return actions;
